@@ -65,6 +65,10 @@ body {
     margin-bottom: 60px;
 }
 
+.section-header p {
+    text-align: left;
+}
+
 .section-title {
     font-size: 2.2rem;
     color: var(--primary);
@@ -146,7 +150,7 @@ body {
     background-color: rgba(37, 99, 235, 0.1);
     color: var(--accent);
     border-radius: 20px;
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     font-weight: 600;
     margin-bottom: 20px;
 }
@@ -415,13 +419,14 @@ body {
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.5px;
-    text-align: left;
+    text-align: center;
 }
 
 .tag-group-items {
     display: flex;
     flex-wrap: wrap;
     gap: 6px;
+    justify-content: center;
 }
 
 .tag-group-items span {
@@ -635,51 +640,56 @@ body {
 /* Advertising Strategy */
 .strategy-flow {
     display: flex;
-    justify-content: space-between;
-    align-items: stretch;
-    gap: 20px;
+    flex-direction: column;
+    gap: 25px;
 }
 
 .flow-card {
-    flex: 1;
     background: var(--bg-white);
-    padding: 30px;
-    border-radius: var(--radius-md);
+    padding: 35px 30px;
+    border-radius: var(--radius-lg);
     border: 1px solid var(--border-color);
     box-shadow: var(--shadow-sm);
     text-align: left;
     position: relative;
-    border-top: 5px solid var(--accent);
+    border-left: 5px solid var(--accent);
+    transition: var(--transition);
+}
+
+.flow-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-md);
 }
 
 .flow-step {
-    font-size: 3rem;
+    font-size: 2.5rem;
     font-weight: 800;
-    color: rgba(37, 99, 235, 0.1);
+    color: rgba(37, 99, 235, 0.15);
     position: absolute;
-    top: 10px;
-    right: 20px;
+    top: 15px;
+    right: 25px;
+    line-height: 1;
 }
 
 .flow-card h4 {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     color: var(--primary);
     margin-bottom: 15px;
-    margin-top: 20px;
     text-align: left;
+    font-weight: 700;
+    padding-right: 60px;
 }
 
 .flow-card p {
     color: var(--text-muted);
-    font-size: 0.95rem;
+    font-size: 1rem;
     text-align: left;
+    line-height: 1.8;
+    margin: 0;
 }
 
 .flow-arrow {
-    display: flex;
-    align-items: center;
-    color: var(--border-color);
-    font-size: 2rem;
+    display: none;
 }
 
 /* AI & Automation */
@@ -706,6 +716,7 @@ body {
 
 .feature-list {
     list-style: none;
+    padding: 0;
 }
 
 .feature-list li {
@@ -713,16 +724,24 @@ body {
     display: flex;
     align-items: flex-start;
     gap: 15px;
+    line-height: 1.7;
 }
 
 .feature-list i {
     color: var(--accent);
     font-size: 1.2rem;
     margin-top: 3px;
+    flex-shrink: 0;
 }
 
 .feature-list strong {
     color: var(--primary);
+    display: block;
+    margin-bottom: 4px;
+}
+
+.feature-list li > span {
+    flex: 1;
 }
 
 .auto-visual {
@@ -1090,7 +1109,7 @@ body {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.5s ease;
+    filter: brightness(0.4);
 }
 
 .gallery-overlay {
@@ -1099,17 +1118,7 @@ body {
     left: 0;
     width: 100%;
     padding: 30px 20px 20px;
-    background: linear-gradient(to top, rgba(15, 23, 42, 0.9), transparent);
     color: var(--text-light);
-    transform: translateY(100%);
-    transition: transform 0.4s ease;
-}
-
-.gallery-item:hover img {
-    transform: scale(1.05);
-}
-
-.gallery-item:hover .gallery-overlay {
     transform: translateY(0);
 }
 
@@ -1131,8 +1140,9 @@ body {
 }
 
 .footer h2 {
-    font-size: 2.2rem;
+    font-size: 1rem;
     margin-bottom: 15px;
+    font-weight: 500;
 }
 
 .footer p {
@@ -1173,7 +1183,7 @@ body {
     .hero-container, .automation-grid {
         flex-direction: column;
     }
-    .skills-timeline-grid, .strategy-flow, .projects-gallery, .cs-strategy {
+    .skills-timeline-grid, .projects-gallery, .cs-strategy {
         grid-template-columns: repeat(2, 1fr);
     }
     .timeline-line {
@@ -1181,9 +1191,6 @@ body {
     }
     .cs-results {
         grid-template-columns: repeat(2, 1fr);
-    }
-    .flow-arrow {
-        display: none;
     }
     .operations-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -1197,16 +1204,38 @@ body {
     .hero-title {
         font-size: 2.2rem;
     }
-    .skills-timeline-grid, .strategy-flow, .projects-gallery, .cs-results, .cs-strategy, .operations-grid {
+    .skills-timeline-grid, .projects-gallery, .cs-results, .cs-strategy, .operations-grid {
         grid-template-columns: 1fr;
     }
     .flow-card {
-        margin-bottom: 20px;
+        padding: 30px 25px;
+    }
+    .flow-step {
+        font-size: 2rem;
+        top: 12px;
+        right: 20px;
+    }
+    .flow-card h4 {
+        font-size: 1.15rem;
+        padding-right: 50px;
+    }
+    .flow-card p {
+        font-size: 0.95rem;
     }
     .cs-hero {
         padding: 30px 25px;
     }
     .cs-hero h3 {
         font-size: 1.5rem;
+    }
+    .operation-card {
+        padding: 25px 20px;
+    }
+    .operation-card h4 {
+        font-size: 1rem;
+    }
+    .operation-card p {
+        font-size: 0.85rem;
+        line-height: 1.6;
     }
 }
